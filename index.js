@@ -7,6 +7,9 @@ const cors = require('cors')
 const port = process.env.PORT || 3000
 const app = express()
 
+// ROUTE FILES
+const auth = require('./routes/auth')
+
 // MIDDLEWARE
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -17,6 +20,8 @@ app.use(cors())
 app.get('/', (req, res) => {
   res.json({ message: 'Server working!'})
 })
+
+app.use('/api/auth', auth)
 
 // ERROR HANDLING
 app.use(notFound)
