@@ -1,0 +1,101 @@
+exports.seed = function (knex, Promise) {
+  // Deletes ALL existing entries
+  return knex.raw('DELETE FROM purchase; ALTER SEQUENCE purchase_id_seq RESTART WITH 24;')
+    .then(function () {
+      const purchases = [{
+        id: 1,
+        users_id: 1,
+        review_id: 1
+      }, {
+        id: 2,
+        users_id: 1,
+        review_id: 2
+      }, {
+        id: 3,
+        users_id: 1,
+        review_id: 3
+      }, {
+        id: 4,
+        users_id: 1,
+        review_id: 4
+      }, {
+        id: 5,
+        users_id: 1,
+        review_id: 5
+      }, {
+        id: 6,
+        users_id: 1,
+        review_id: 6
+      }, {
+        id: 7,
+        users_id: 1,
+        review_id: 7
+      }, {
+        id: 8,
+        users_id: 1,
+        review_id: 8
+      }, {
+        id: 9,
+        users_id: 1,
+        review_id: 9
+      }, {
+        id: 10,
+        users_id: 1,
+        review_id: 10
+      }, {
+        id: 11,
+        users_id: 2,
+        review_id: 1
+      }, {
+        id: 12,
+        users_id: 2,
+        review_id: 2
+      }, {
+        id: 13,
+        users_id: 2,
+        review_id: 3
+      }, {
+        id: 14,
+        users_id: 2,
+        review_id: 4
+      }, {
+        id: 15,
+        users_id: 2,
+        review_id: 5
+      }, {
+        id: 16,
+        users_id: 2,
+        review_id: 6
+      }, {
+        id: 17,
+        users_id: 2,
+        review_id: 7
+      }, {
+        id: 18,
+        users_id: 2,
+        review_id: 8
+      }, {
+        id: 19,
+        users_id: 2,
+        review_id: 9
+      }, {
+        id: 20,
+        users_id: 2,
+        review_id: 10
+      }, {
+        id: 21,
+        users_id: 3,
+        review_id: 4
+      }, {
+        id: 22,
+        users_id: 3,
+        review_id: 5
+      }, {
+        id: 23,
+        users_id: 3,
+        review_id: 6
+      }]
+
+      return knex('purchase').insert(purchases)
+    })
+}
