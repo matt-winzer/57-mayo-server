@@ -9,6 +9,7 @@ const app = express()
 
 // ROUTE FILES
 const auth = require('./routes/auth')
+const users = require('./routes/users')
 
 // MIDDLEWARE
 app.use(bodyParser.json())
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/auth', auth)
+app.use('/api/users', users)
 
 // ERROR HANDLING
 app.use(notFound)
