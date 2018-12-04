@@ -17,12 +17,11 @@ router.post('/login', (req, res, next) => {
       else {
         const hashedPassword = user[0].password
         const match = bcrypt.compareSync(password, hashedPassword)
-
         if (!match) res.json({ error: 'Password does not match. Please try again.' })
         else {
           const payload = { ...user[0] }
           delete payload.password
-          const token = jwt.sign(payload, process.env.TOKEN_SECRET)
+          const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: '1d' })
 
           res.json({ token })
         }
@@ -49,7 +48,7 @@ router.post('/signup', (req, res, next) => {
           .then(newUser => {
             const payload = newUser[0]
             delete payload.password
-            const token = jwt.sign(payload, process.env.TOKEN_SECRET)
+            const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: '1d' })
 
             res.status(201).json({ token })
           })
