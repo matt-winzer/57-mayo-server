@@ -15,7 +15,7 @@ router.get('/:id/reviews', (req, res, next) => {
     verifyToken(token, process.env.TOKEN_SECRET)
       .then(decoded => {
         if (decoded.id == id) {
-          knex('purchase')
+          return knex('purchase')
             .select(
               'review.id',
               'review.created_at',
